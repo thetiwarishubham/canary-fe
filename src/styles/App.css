@@ -1,0 +1,197 @@
+/* General Reset */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Main Header Styling */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1a73e8, #4a90e2);
+  color: white;
+  padding: 10px 20px;
+  border-bottom: 2px solid #185abc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px; /* Fixed header height */
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Allow wrapping of header content */
+}
+
+.main-header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex: 1; /* Take available space */
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation ul li {
+  display: inline;
+}
+
+.navigation ul li a,
+.navigation ul li button {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Hover and Active States */
+.navigation ul li a:hover,
+.navigation ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.navigation ul li a:active,
+.navigation ul li button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Logout Button Specificity */
+.navigation ul li button {
+  font-size: 1rem;
+}
+
+/* Main Content Spacing */
+.main-content {
+  margin-top: 80px; /* Account for fixed header height */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-header {
+    padding: 10px;
+    flex-wrap: wrap; /* Allow wrapping of header content */
+  }
+
+  .main-header h1 {
+    margin-bottom: 10px; /* Add spacing below the title */
+    flex: 1 1 100%; /* Ensure title takes full width */
+    text-align: center; /* Center align title */
+  }
+
+  .navigation ul {
+    justify-content: flex-start; /* Align navigation links to the left */
+    flex-wrap: wrap; /* Allow navigation links to wrap */
+    width: 100%;
+  }
+
+  .navigation ul li a,
+  .navigation ul li button {
+    font-size: 0.85rem; /* Reduce font size for smaller screens */
+    padding: 6px 12px; /* Reduce padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-wrap: wrap; /* Allow header content to wrap */
+    padding: 10px;
+  }
+
+  .main-header h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    flex: 1 1 100%; /* Ensure title takes full width */
+  }
+
+  .navigation ul {
+    justify-content: flex-start; /* Align navigation links to the left */
+    flex-wrap: wrap; /* Allow navigation links to wrap */
+    width: 100%;
+  }
+
+  .navigation ul li a,
+  .navigation ul li button {
+    font-size: 0.85rem; /* Reduce font size for smaller screens */
+    padding: 6px 12px; /* Reduce padding */
+  }
+
+  .main-content {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    padding: 8px;
+    flex-direction: column; /* Stack header content vertically */
+    text-align: center;
+  }
+
+  .navigation ul {
+    width: 100%;
+    justify-content: center; /* Center the navigation links */
+  }
+
+  .navigation ul li a,
+  .navigation ul li button {
+    font-size: 0.75rem; /* Smaller font size */
+    padding: 4px 8px; /* Reduced padding */
+  }
+
+  .main-content {
+    padding: 10px; /* Further reduce padding */
+  }
+
+  /* Adjustments for Logout Button */
+  .navigation ul li .logout-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Logout Button Styles */
+ul li a, ul li .logout-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #007bff; /* Matches typical link color */
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul li a:hover, ul li .logout-btn:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker hover color */
+}

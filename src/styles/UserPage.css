@@ -1,0 +1,147 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#context-container {
+    width: 100%;
+    max-width: 1600px; /* Increased max width for a larger container */
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e6e9ef;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff; /* Ensure header has a white background */
+    z-index: 10; /* Keep header on top of other elements */
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a73e8;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 16px; /* Increased padding for bigger cells */
+    text-align: left;
+    border-bottom: 1px solid #e6e9ef;
+    font-size: 1.1rem; /* Increased font size for readability */
+}
+
+th {
+    background-color: #f7f9fc;
+    font-weight: bold;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Pagination Styling */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    margin: 0 10px; /* Slightly increased margin between pagination buttons */
+    padding: 10px 15px; /* Larger padding for easier clicking */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.pagination li:hover {
+    background-color: #1a73e8;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.pagination .active {
+    background-color: #1a73e8;
+    color: white;
+}
+
+/* Submit Button Styling */
+#submit-btn {
+    width: 100%;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px; /* Increased padding for a larger button */
+    font-size: 1.2rem; /* Increased font size for the button */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+#submit-btn:hover {
+    background-color: #185abc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26, 115, 232, 0.3);
+}
+
+#submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+#create-context-btn {
+    position: absolute;
+    top: 1px; /* Space from top */
+    right: 20px; /* Space from right */
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#create-context-btn:hover {
+    background-color: #185abc;
+    transform: translateY(-2px);
+}
+
+#create-context-btn:active {
+    transform: translateY(0);
+}
+
