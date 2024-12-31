@@ -64,7 +64,7 @@ const ChatPage = () => {
     appendMessage('Chatbot', 'Analyzing...');
 
     try {
-      const response = await fetch('http://localhost:3000/api/chat', {
+      const response = await fetch('https://canary-be.onrender.com/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,12 +74,12 @@ const ChatPage = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        const body = await response.json();
         // Replace the "Analyzing..." message with the actual response
         setMessages((prev) =>
           prev.map((msg, index) =>
             index === prev.length - 1 && msg.text === 'Analyzing...'
-              ? { ...msg, text: data.userMessage || 'No response.' }
+              ? { ...msg, text: body.data.reply || 'No response.' }
               : msg
           )
         );

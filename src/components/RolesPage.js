@@ -17,7 +17,7 @@ function RolesPage() {
 
     const listContext = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/roles', {
+            const response = await fetch('https://canary-be.onrender.com/api/roles', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,8 +26,8 @@ function RolesPage() {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setTransactions(data.reply);
+                const body = await response.json();
+                setTransactions(body.data);
             } else {
                 setTransactions([]);
             }

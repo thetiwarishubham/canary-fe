@@ -8,7 +8,7 @@ const LoginPage = () => {
 
   const authenticateUser = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("https://canary-be.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -16,13 +16,13 @@ const LoginPage = () => {
         body: JSON.stringify({ username, pass: password }),
       });
 
-      const data = await response.json();
+      const body = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("authToken", body.data.token);
         window.location.href = "/chatbot";
       } else {
-        setErrorMessage(data.message || "Login failed!");
+        setErrorMessage(body || "Login failed!");
       }
     } catch (error) {
       setErrorMessage("An error occurred. Please try again later.");

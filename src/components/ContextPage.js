@@ -17,7 +17,7 @@ function ContextPage() {
 
     const listContext = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/modelData', {
+            const response = await fetch('https://canary-be.onrender.com/api/context', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,8 +26,8 @@ function ContextPage() {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setTransactions(data.reply);
+                const body = await response.json();
+                setTransactions(body.data);
             } else {
                 setTransactions([]);
             }

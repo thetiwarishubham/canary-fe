@@ -30,13 +30,13 @@ const Chatbot = () => {
     
     const fetchOptions = async (searchQuery) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/chat?search=${searchQuery}`, {
+            const response = await fetch(`https://canary-be.onrender.com/api/context/search?name=${searchQuery}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
             });
-            const data = await response.json();
-            setOptions(data.reply || []);
+            const body = await response.json();
+            setOptions(body.data || []);
             setDropdownVisible(true);
         } catch (error) {
             console.error("Error fetching options:", error);

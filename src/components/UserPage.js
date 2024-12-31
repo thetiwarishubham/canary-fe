@@ -17,7 +17,7 @@ function UserPage() {
 
     const listContext = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/users', {
+            const response = await fetch('https://canary-be.onrender.com/api/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,8 +26,8 @@ function UserPage() {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setTransactions(data.reply);
+                const body = await response.json();
+                setTransactions(body.data);
             } else {
                 setTransactions([]);
             }
