@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/ChatbotPage.css';
 
 const Chatbot = () => {
-    const [authToken, setAuthToken] = useState(localStorage.getItem('authToken'));
+    const [authToken] = useState(localStorage.getItem('authToken'));
     const [roles] = useState([
         { value: "devops", label: "🔧 DevOps" },
         { value: "manager", label: "👔 Manager" },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../styles/ChatPage.css';
 
 const ChatPage = () => {
@@ -15,13 +15,41 @@ const ChatPage = () => {
   const language = queryParams.get('lang');
   const name = queryParams.get('name');
 
+  // Memoize fetchWelcomeMessage to avoid unnecessary re-renders
+  const fetchWelcomeMessage = useCallback(async () => {
+    appendMessage('Chatbot', `Hello ${name}! Welcome to the chatbot. How can I assist you today? You can ask questions about query, response, fields info, service & API dependencies. Language: ${language}`);
+    // Uncomment below if you want to fetch the message from an API
+    console.log('authToken', authToken);
+    /*
+    try {
+      const response = await fetch('http://localhost:3000/api/welcome-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ name, language }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        appendMessage('Chatbot', data.reply || 'Welcome!');
+      } else {
+        appendMessage('Error', 'Failed to fetch welcome message.');
+      }
+    } catch {
+      appendMessage('Error', 'Failed to connect to server.');
+    }
+    */
+  }, [authToken, name, language]); // Add dependencies if required
+
   useEffect(() => {
     if (!authToken) {
       window.location.href = '/login';
     } else {
       fetchWelcomeMessage();
     }
-  }, [authToken]);
+  }, [authToken, fetchWelcomeMessage]); // Add fetchWelcomeMessage as a dependency
 
   useEffect(() => {
     // Auto-scroll to the latest message
@@ -29,30 +57,6 @@ const ChatPage = () => {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [messages]);
-
-  const fetchWelcomeMessage = async () => {
-    
-    appendMessage('Chatbot', `Hello ${name}! Welcome to the chatbot. How can I assist you today? You can ask question about query, response, fields info, service & api dependency.`);
-    // try {
-    //   const response = await fetch('http://localhost:3000/api/welcome-message', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: `Bearer ${authToken}`,
-    //     },
-    //     body: JSON.stringify({ name, language }),
-    //   });
-
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     appendMessage('Chatbot', data.reply || 'Welcome!');
-    //   } else {
-    //     appendMessage('Error', 'Failed to fetch welcome message.');
-    //   }
-    // } catch {
-    //   appendMessage('Error', 'Failed to connect to server.');
-    // }
-  };
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;

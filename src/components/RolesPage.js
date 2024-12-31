@@ -8,6 +8,27 @@ function RolesPage() {
     const authToken = localStorage.getItem('authToken');
 
     useEffect(() => {
+        const listContext = async () => {
+            try {
+                const response = await fetch('https://canary-be.onrender.com/api/roles', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                });
+
+                if (response.ok) {
+                    const body = await response.json();
+                    setTransactions(body.data);
+                } else {
+                    setTransactions([]);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
         if (!authToken) {
             window.location.href = '/login';
         } else {
@@ -15,27 +36,7 @@ function RolesPage() {
         }
     }, [authToken]);
 
-    const listContext = async () => {
-        try {
-            const response = await fetch('https://canary-be.onrender.com/api/roles', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authToken}`,
-                }
-            });
-
-            if (response.ok) {
-                const body = await response.json();
-                setTransactions(body.data);
-            } else {
-                setTransactions([]);
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
+   
     return (
         <div>
             <div id="context-container">

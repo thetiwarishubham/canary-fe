@@ -9,32 +9,34 @@ function ContextPage() {
 
     useEffect(() => {
         if (!authToken) {
-            window.location.href = '/login';
+          window.location.href = '/login';
         } else {
-            listContext();
-        }
-    }, [authToken]);
-
-    const listContext = async () => {
-        try {
-            const response = await fetch('https://canary-be.onrender.com/api/context', {
+          const listContext = async () => {
+            try {
+              const response = await fetch('https://canary-be.onrender.com/api/context', {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authToken}`,
-                }
-            });
-
-            if (response.ok) {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${authToken}`,
+                },
+              });
+    
+              if (response.ok) {
                 const body = await response.json();
                 setTransactions(body.data);
-            } else {
+              } else {
                 setTransactions([]);
+              }
+            } catch (error) {
+              console.error('Error fetching data:', error);
             }
-        } catch (error) {
-            console.error('Error fetching data:', error);
+          };
+    
+          listContext();
         }
-    };
+      }, [authToken]);
+
+   
 
     const handleCreateContextClick = () => {
         window.location.href = `/create-context`;

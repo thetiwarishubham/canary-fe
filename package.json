@@ -1,5 +1,5 @@
 {
-  "name": "wallet-app",
+  "name": "canary-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

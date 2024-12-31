@@ -8,7 +8,7 @@ import './styles/App.css';
 
 
 import LoginPage from './components/LoginPage';
-import HomePage from './components/HomePage';
+// import HomePage from './components/HomePage';
 import ChatbotPage from './components/ChatbotPage';
 import ChatPage from './components/ChatPage';
 import ContextPage from './components/ContextPage';
