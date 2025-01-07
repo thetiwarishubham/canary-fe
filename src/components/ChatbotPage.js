@@ -21,6 +21,8 @@ const Chatbot = () => {
     const [query, setQuery] = useState("");
     const [options, setOptions] = useState([]);
     const [dropdownVisible, setDropdownVisible] = useState(false);
+    // const baseUrl = 'https://canary-be.onrender.com';
+    const baseUrl = 'https://canary-be.onrender.com';
 
     useEffect(() => {
         if (!authToken) {
@@ -30,7 +32,7 @@ const Chatbot = () => {
     
     const fetchOptions = async (searchQuery) => {
         try {
-            const response = await fetch(`https://canary-be.onrender.com/api/context/search?name=${searchQuery}`, {
+            const response = await fetch(`${baseUrl}/api/context/search?name=${searchQuery}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`
                 }
@@ -80,7 +82,7 @@ const Chatbot = () => {
         <div id="chat-container">
             <div id="header">
                 {/* <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Fcanarylabs%2F%3Flocale%3Dzh_CN&psig=AOvVaw12Vki5wc0ZAYenAOh0usyr&ust=1735462553911000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwj7wdL5i8qKAxU6bmwGHbIGIA8QjRx6BAgAEBk" alt="Chatbot Icon" /> */}
-                Canary Chatbot
+                Intelligent Search Engine
             </div>
             <div id="role-container">
                 <label htmlFor="role-select">Select Role:</label>
@@ -116,6 +118,7 @@ const Chatbot = () => {
                     placeholder="Type or select an option..."
                     value={query}
                     onChange={handleInputChange}
+                    autoComplete="off"
                 />
                 {dropdownVisible && (
                     <div id="dropdown">

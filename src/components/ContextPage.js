@@ -53,21 +53,19 @@ function ContextPage() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Name</th>
-                            <th>Role</th>
-                            <th>Context</th>
                             <th>Query</th>
+                            <th>Schema</th>
+                            <th>Mock Response</th>
                         </tr>
                     </thead>
                     <tbody>
                         {transactions.map(transaction => (
-                            <tr key={transaction.id}>
-                                <td>{transaction.id}</td>
+                            <tr key={transaction._id}>
                                 <td>{transaction.name}</td>
-                                <td>{transaction.role}</td>
-                                <td>{transaction.context}</td>
                                 <td>{transaction.query}</td>
+                                <td>{transaction.schema}</td>
+                                <td>{transaction.mockApis}</td>
                             </tr>
                         ))}
                     </tbody>

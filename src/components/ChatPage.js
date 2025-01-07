@@ -118,6 +118,7 @@ const ChatPage = () => {
           id="chat-input"
           placeholder="Type your message here..."
           value={inputMessage}
+          autoComplete="off"
           onChange={(e) => setInputMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
         />
